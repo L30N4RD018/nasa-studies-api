@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nasa_studies_api
+    ports:
+      - "80:80"
+    volumes:
+      # Montar código para desarrollo (hot reload)
+      - ./app:/app/app
+      - ./odr:/app/odr
+      - ./config:/app/config
+      # Asegurar que el modelo está montado
+      - ./app/models/odr_model_q5_k_m.gguf:/app/app/models/odr_model_q5_k_m.gguf:ro
+    environment:
+      - GGUF_MODEL_PATH=/app/app/models/odr_model_q5_k_m.gguf
+      - PYTHONUNBUFFERED=1
+      - USE_LLM=true  # Activar generación con LLM
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 4G
+        reservations:
+          memory: 1.5G
+    restart: unless-stopped
+    command: uvicorn app.main:app --host 0.0.0.0 --port 80 --reload
+
+  # Servicio de prueba del modelo (opcional)
+  model-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nasa_model_test
+    volumes:
+      - ./app:/app/app
+      - ./test_model.py:/app/test_model.py
+      - ./app/models/odr_model_q5_k_m.gguf:/app/app/models/odr_model_q5_k_m.gguf:ro
+    environment:
+      - GGUF_MODEL_PATH=/app/app/models/odr_model_q5_k_m.gguf
+    profiles:
+      - testing
+    command: python test_model.py

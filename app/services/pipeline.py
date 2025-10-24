@@ -1,10 +1,15 @@
 from typing import Dict, Any, Tuple
 import pandas as pd
-import datetime as dt
+import time
 from .filters import FilterEngine
 from .ranking import rank_subset
 from .generation import generate_title_and_description, tokenize, STOP
 from collections import defaultdict
+from datetime import datetime, timezone
+# Build query_params reproducible
+from urllib.parse import quote
+import math
+from collections import Counter
 
 class PayloadBuilder:
     def __init__(self, studies_df: pd.DataFrame, id_col: str = 'Study Identifier'):
@@ -22,6 +27,8 @@ class PayloadBuilder:
         self.filter_engine = FilterEngine(studies_df, id_col, self.global_token_studies)
         # Simple in-memory cache (key tuple) para respuestas repetidas
         self._cache = {}
+        # Track LLM status
+        self._llm_loaded = False
 
     def compute_emerging_topics(self, subset_df, top_n=5, max_samples=4):
         if subset_df.empty:
@@ -34,7 +41,6 @@ class PayloadBuilder:
             for t in toks:
                 subset_token_studies[t].add(sidv)
         candidates = []
-        import math
         for tok, sids in subset_token_studies.items():
             sub_occ = len(sids)
             glob_occ = self.global_token_freq.get(tok,0)
@@ -57,7 +63,6 @@ class PayloadBuilder:
         return out
 
     def frequent_subset_tokens(self, ranked_df, limit=8):
-        from collections import Counter
         toks = []
         head_limit = min(120, len(ranked_df))
         for _, r in ranked_df.head(head_limit).iterrows():
@@ -66,15 +71,14 @@ class PayloadBuilder:
         cnt = Counter(toks)
         return [{'token': t, 'occurrences': int(c)} for t,c in cnt.most_common(limit)]
 
-    def _cache_key(self, filters: Dict[str,Any], page:int, page_size:int, mode:str, emerging_topics_n:int, compact: bool) -> Tuple:
+    def _cache_key(self, filters: Dict[str,Any], page:int, page_size:int, emerging_topics_n:int, compact: bool, use_llm: bool) -> Tuple:
         # Filters order independent key
         filt_items = tuple(sorted((k, tuple(v) if isinstance(v, list) else v) for k,v in filters.items()))
-        return (filt_items, page, page_size, mode, emerging_topics_n, compact)
+        return (filt_items, page, page_size, emerging_topics_n, compact, use_llm)
 
-    def build_payload(self, filters: Dict[str,Any], page:int=1, page_size:int=20, mode='heuristico', emerging_topics_n=5, compact: bool=False) -> Dict[str,Any]:
-        import time
+    def build_payload(self, filters: Dict[str,Any], page:int=1, page_size:int=20, emerging_topics_n=5, compact: bool=False, use_llm: bool=True) -> Dict[str,Any]:
         t0 = time.time()
-        key = self._cache_key(filters, page, page_size, mode, emerging_topics_n, compact)
+        key = self._cache_key(filters, page, page_size, emerging_topics_n, compact, use_llm)
         if key in self._cache:
             out = self._cache[key].copy()
             out['debug']['cache_hit'] = True
@@ -95,8 +99,8 @@ class PayloadBuilder:
         important = ranked.head(10)
         less_rel = ranked.tail(5).sort_values('rank_score') if total >=5 else ranked.tail(3)
 
-        # Generate title & description
-        gen = generate_title_and_description(ranked, filters)
+        # Generate title & description - PASAR use_llm
+        gen = generate_title_and_description(ranked, filters, use_llm=use_llm)
 
         # Emerging topics
         emerging = self.compute_emerging_topics(ranked, top_n=emerging_topics_n)
@@ -111,9 +115,6 @@ class PayloadBuilder:
             obj['rank_score'] = float(r.get('rank_score',0))
             full_records.append(obj)
 
-        from datetime import datetime
-        # Build query_params reproducible
-        from urllib.parse import quote
         qp_parts = []
         for k in ('organism','project_type','keywords'):
             vals = filters.get(k) or []
@@ -195,7 +196,7 @@ class PayloadBuilder:
                 'total_full': len(full_records),
                 'suggested_keywords': suggested_kw
             },
-            'exported_at': datetime.utcnow().isoformat()+'Z'
+            'exported_at': datetime.now(timezone.utc).isoformat()
         }
         # Agregar estadísticas internas del motor de filtros si existen
         if hasattr(self.filter_engine, 'last_stats') and self.filter_engine.last_stats:

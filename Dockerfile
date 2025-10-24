@@ -1,27 +1,47 @@
-# Imagen base ligera
-FROM python:3.11-slim AS base
+# Dockerfile para NASA Studies API con GGUF
+FROM python:3.10-slim
 
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    PIP_NO_CACHE_DIR=1
+# Variables de build
+ARG DEBIAN_FRONTEND=noninteractive
 
+# Instalar dependencias del sistema
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    git \
+    wget \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Crear directorio de trabajo
 WORKDIR /app
 
-# Dependencias del sistema mínimas (amplía si necesitas compilar modelos)
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential curl && rm -rf /var/lib/apt/lists/*
+# Copiar requirements primero (cache de Docker)
+COPY requirements.txt .
 
-COPY requirements.txt ./
-RUN pip install --upgrade pip && pip install -r requirements.txt
+# Instalar dependencias Python básicas
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar código
-COPY app ./app
-COPY streamlit_app.py ./
-COPY BACKEND_DOCUMENTACION.md ./
+# Instalar llama-cpp-python con optimizaciones CPU
+RUN CMAKE_ARGS="-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS" \
+    pip install llama-cpp-python --no-cache-dir
 
-# Copiar muestra de datos ODR (en producción podrías montar un volumen)
-COPY odr ./odr
+# Copiar código de la aplicación
+COPY . .
 
-EXPOSE 8000
+# Crear directorios necesarios
+RUN mkdir -p /app/models /app/data/processed /app/data/raw
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Variables de entorno
+ENV PYTHONUNBUFFERED=1
+ENV GGUF_MODEL_PATH=/app/app/models/odr_model_q5_k_m.gguf
+
+# Puerto para FastAPI
+EXPOSE 80
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:80/health || exit 1
+
+# Comando por defecto
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]

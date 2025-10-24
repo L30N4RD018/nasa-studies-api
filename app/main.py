@@ -2,9 +2,13 @@ from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional, Any, Dict
 import pandas as pd
-import os, json, glob, re, pathlib
+import json, pathlib
 from datetime import datetime, timezone
 from .services.pipeline import PayloadBuilder
+from .services.generation import generate_title_and_description, LLM_AVAILABLE, GGUF_MODEL_PATH, _llm_instance
+from .services.ranking import rank_subset
+import traceback
+import os
 
 app = FastAPI(title="NASA Studies API", version="0.1.0")
 
@@ -298,9 +302,9 @@ async def get_studies(
     q_min_match: Optional[int] = None,
     page: int = 1,
     page_size: int = 20,
-    mode: str = 'heuristico',
     emerging_topics_n: int = 5,
-    compact: bool = False
+    compact: bool = False,
+    use_llm: bool = False
 ):
     filters: Dict[str,Any] = {
         'organism': organism or [],
@@ -310,8 +314,71 @@ async def get_studies(
         'q_mode': q_mode,
         'q_min_match': q_min_match
     }
-    payload = pipeline.build_payload(filters, page=page, page_size=page_size, mode=mode, emerging_topics_n=emerging_topics_n, compact=compact)
+    payload = pipeline.build_payload(filters, page=page, page_size=page_size, emerging_topics_n=emerging_topics_n, compact=compact, use_llm=use_llm)
     return payload
+
+@app.post('/studies/generate')
+async def generate_enhanced_content(body: Dict[str, Any]):
+    """
+    Genera título y descripción mejorados con LLM para un conjunto de estudios ya filtrados.
+    
+    Body esperado:
+    {
+        "filters": {
+            "organism": [...],
+            "project_type": [...],
+            "keywords": [...],
+            "q": "..."
+        },
+        "force_llm": true  // Opcional, default true
+    }
+    """
+    filters = body.get('filters', {})
+    force_llm = body.get('force_llm', True)
+    
+    # Normalizar filtros
+    filters_normalized: Dict[str, Any] = {
+        'organism': filters.get('organism', []),
+        'project_type': filters.get('project_type', []),
+        'keywords': filters.get('keywords', []),
+        'q': filters.get('q'),
+        'q_mode': filters.get('q_mode', 'and'),
+        'q_min_match': filters.get('q_min_match')
+    }
+    
+    # Obtener estudios filtrados
+    ids = pipeline.filter_engine.filter_ids(filters_normalized)
+    subset = _df[_df[ID_COL].isin(ids)].copy()
+    
+    if subset.empty:
+        return {
+            'success': False,
+            'error': 'no_studies_found',
+            'message': 'No studies match the provided filters'
+        }
+    
+    # Rankear
+    ranked = rank_subset(subset, ID_COL)
+        
+    try:
+        result = generate_title_and_description(
+            ranked, 
+            filters_normalized, 
+            use_llm=force_llm
+        )
+        
+        return {
+            'success': True,
+            'generated': result,
+            'studies_count': len(ranked)
+        }
+    except Exception as e:
+        return {
+            'success': False,
+            'error': 'generation_failed',
+            'message': str(e),
+            'traceback': traceback.format_exc() if body.get('debug') else None
+        }
 
 @app.post('/studies/search')
 async def post_studies_search(body: Dict[str,Any]):
@@ -326,6 +393,8 @@ async def post_studies_search(body: Dict[str,Any]):
     mode = body.get('mode','heuristico')
     emerging_topics_n = int(body.get('emerging_topics_n',5))
     compact = bool(body.get('compact', False))
+    use_llm = bool(body.get('use_llm', False))
+    
     filters: Dict[str,Any] = {
         'organism': organism,
         'project_type': project_type,
@@ -334,7 +403,7 @@ async def post_studies_search(body: Dict[str,Any]):
         'q_mode': q_mode,
         'q_min_match': q_min_match
     }
-    return pipeline.build_payload(filters, page=page, page_size=page_size, mode=mode, emerging_topics_n=emerging_topics_n, compact=compact)
+    return pipeline.build_payload(filters, page=page, page_size=page_size, mode=mode, emerging_topics_n=emerging_topics_n, compact=compact, use_llm=use_llm)
 
 @app.post('/reload')
 async def reload_dataset():
@@ -347,6 +416,49 @@ async def reload_dataset():
         'organisms': int(_df['organism_label'].nunique()) if 'organism_label' in _df else 0,
         'raw_columns': len(_raw_full_df.columns)
     }
+
+@app.get('/llm/status')
+async def llm_status():
+    """Estado detallado del modelo LLM local."""    
+    model_exists = os.path.exists(GGUF_MODEL_PATH) if GGUF_MODEL_PATH else False
+    model_loaded = _llm_instance is not None
+    
+    status = {
+        'available': LLM_AVAILABLE == 'llama-cpp-python',
+        'library': LLM_AVAILABLE,
+        'model_path': GGUF_MODEL_PATH,
+        'model_exists': model_exists,
+        'model_loaded': model_loaded,
+        'ready': model_exists and LLM_AVAILABLE == 'llama-cpp-python'
+    }
+    
+    if model_exists:
+        try:
+            file_size_mb = os.path.getsize(GGUF_MODEL_PATH) / (1024 * 1024)
+            status['model_size_mb'] = round(file_size_mb, 1)
+        except:
+            pass
+    
+    return status
+
+@app.post('/llm/reload')
+async def reload_llm():
+    """Recarga el modelo LLM (útil después de cambios)."""
+    from .services.generation import load_llm_model
+    global pipeline
+    
+    try:
+        llm = load_llm_model()
+        pipeline._llm_loaded = llm is not None
+        return {
+            'success': llm is not None,
+            'message': 'Modelo cargado exitosamente' if llm else 'Error cargando modelo'
+        }
+    except Exception as e:
+        return {
+            'success': False,
+            'error': str(e)
+        }
 
 @app.get('/studies/{study_id}')
 async def get_study_detail(study_id: str):
@@ -411,5 +523,3 @@ async def get_study_detail(study_id: str):
         ok = str(out['organism'])
         out['organism_label'] = ORGANISM_LABELS.get(ok.lower(), ok)
     return out
-
-# Nota: Para LLM remoto/local se añadirían endpoints /generate o /summarize, encapsulando claves API y caching.
