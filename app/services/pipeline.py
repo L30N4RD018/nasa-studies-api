@@ -138,6 +138,7 @@ class PayloadBuilder:
                 'query_params': query_params
             },
             'generated': gen,
+            'spell_check': self.filter_engine.spell_corrections if hasattr(self.filter_engine, 'spell_corrections') else {},
             'counts': {
                 'total_studies': int(ranked[self.id_col].nunique()),
                 'important': int(len(important)),

@@ -1,145 +1,107 @@
-<div align="center">
+# NASA Studies API
 
-# Plataforma de Estudios y Literatura Bioespacial
-**Catálogo y API unificada para explorar estudios (ODR) y artículos científicos (literatura PMC).**
+API REST construida con **FastAPI** para explorar y sintetizar estudios de
+biología espacial del [NASA Open Science Data Repository (OSDR)](https://osdr.nasa.gov/).
 
-</div>
+Indexa **1119 estudios** repartidos en 15 organismos y 11 tipos de proyecto, y
+genera títulos y descripciones para cualquier subconjunto filtrado usando un
+**LLM local en formato GGUF** (`llama.cpp`), con caída automática a un método
+heurístico cuando el modelo no está disponible.
 
-## Índice Rápido
-- [Visión General](#visión-general)
-- [Quickstart API](#quickstart-api)
-- [Endpoints](#endpoints-principales)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Campos Generados](#campos-generados)
-- [Caching y Rendimiento](#caching-y-rendimiento)
-- [Roadmap](#roadmap)
-- [Documentación Extendida](#documentación-extendida)
-- [Análisis NLP Exploratorio (Fase Original)](#análisis-nlp-exploratorio-fase-original)
+Proyecto nacido en el NASA Space Apps Challenge 2025.
 
-## Visión General
-El backend unifica múltiples archivos JSON de estudios por organismo y tipo de proyecto junto con un archivo de artículos científicos. Proporciona filtrado, búsqueda escalonada y generación de campos derivados a partir del propio contenido (títulos alternos, resúmenes compactos y términos emergentes) sin depender de un modelo externo en esta fase.
+## Características
 
-## Quickstart API
-```powershell
+- **Búsqueda facetada** por organismo, tipo de proyecto, palabras clave y texto libre.
+- **Generación con LLM local** — sin claves de API ni servicios externos: el
+  modelo cuantizado (Q5_K_M) corre en CPU vía `llama-cpp-python`.
+- **Degradación elegante** — si `llama-cpp-python` o el `.gguf` no están
+  presentes, la API arranca igual y responde en *modo heurístico*. Todos los
+  endpoints siguen operativos salvo la síntesis por LLM.
+- **Corrector ortográfico** y expansión de consultas sobre el vocabulario del corpus.
+- **Caché en memoria** de payloads por combinación de filtros.
+
+## Endpoints
+
+| Método | Ruta                  | Descripción                                        |
+|--------|-----------------------|----------------------------------------------------|
+| GET    | `/health`             | Estado del servicio y nº de estudios cargados      |
+| GET    | `/docs`               | Swagger UI (automático de FastAPI)                 |
+| GET    | `/facets`             | Valores disponibles para cada faceta               |
+| GET    | `/studies`            | Listado paginado con filtros                       |
+| GET    | `/studies/{study_id}` | Detalle de un estudio                              |
+| POST   | `/studies/search`     | Búsqueda completa (payload con artículos y tópicos)|
+| POST   | `/studies/generate`   | Genera título y descripción del subconjunto        |
+| GET    | `/spell-check`        | Corrección ortográfica de una consulta             |
+| GET    | `/llm/status`         | Disponibilidad y estado de carga del modelo        |
+| POST   | `/llm/reload`         | Recarga el modelo en caliente                      |
+| POST   | `/reload`             | Recarga el corpus desde disco                      |
+
+## Instalación
+
+```bash
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-uvicorn app.main:app --port 8000
-```
-Visita: http://localhost:8000/docs
-
-Ejemplo rápido:
-```
-GET /studies?organism=Plant&project_type=High%20Altitude&q=photosynthesis
+uvicorn app.main:app --reload
 ```
 
-## Endpoints Principales
-| Método | Ruta | Uso |
-|--------|------|-----|
-| GET | /health | Estado rápido (conteos) |
-| GET | /facets | Facetas (organism, project_type) |
-| GET | /studies | Listado + filtros y paginación |
-| POST | /studies/search | Búsqueda vía body JSON (similar a GET) |
-| GET | /studies/{id} | Detalle enriquecido |
-| POST | /reload | Recarga datos en memoria |
+La API queda en `http://127.0.0.1:8000` y la documentación en `/docs`.
 
-Documentación detallada: `README_API.md`.
+### Con el modelo LLM
 
-## Estructura del Proyecto
+El `.gguf` **no se versiona** (pesa ~869 MB). Colócalo en
+`app/models/odr_model_q5_k_m.gguf` e instala el runtime:
+
+```bash
+pip install llama-cpp-python \
+  --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu
+```
+
+El índice de wheels precompilados evita compilar `llama.cpp` desde fuente.
+
+### Con Docker
+
+```bash
+docker build -t nasa-studies-api .
+docker run -p 80:80 nasa-studies-api
+```
+
+## Variables de entorno
+
+| Variable          | Por defecto        | Descripción                                      |
+|-------------------|--------------------|--------------------------------------------------|
+| `GGUF_MODEL_PATH` | `/app/app/models/…`| Ruta al modelo `.gguf`                           |
+| `LLM_N_THREADS`   | nº de CPUs         | Hilos de inferencia                              |
+| `LLM_N_CTX`       | `2048`             | Ventana de contexto                              |
+| `LLM_N_BATCH`     | `512`              | Tamaño de batch; bajar si hay presión de memoria |
+| `LLM_USE_MLOCK`   | `0`                | `mlock` requiere `CAP_IPC_LOCK`; falla en la mayoría de contenedores |
+
+## Despliegue
+
+Incluye `render.yaml` para [Render](https://render.com). El plan gratuito
+(512 MB de RAM) ejecuta la API en modo heurístico sin problema: el consumo
+medido en reposo es de ~119 MB.
+
+Para servir el modelo hacen falta ~2 GB de RAM, fuera del alcance de los
+planes gratuitos actuales de PaaS.
+
+## Estructura
+
 ```
 app/
-  main.py
-  services/ (pipeline, filtros, ranking, generación)
-odr/ (datasets versionados necesarios)
-results/ (exportaciones derivadas)
-scripts/ (utilidades, PDF docs)
-docs/DEPLOYMENT.md
-BACKEND_DOCUMENTACION.md
-README_API.md
+  main.py              # rutas FastAPI y carga del corpus
+  models/payload.py    # esquemas de respuesta
+  services/
+    pipeline.py        # orquestación y caché
+    filters.py         # filtrado y expansión de consultas
+    ranking.py         # ordenación por relevancia
+    generation.py      # LLM GGUF + fallback heurístico
+    spell_checker.py   # corrección ortográfica
+odr/                   # corpus OSDR en JSON por organismo
+config/                # catálogo de tópicos
+streamlit_app.py       # frontend de demostración
 ```
 
-## Campos Generados
-| Campo | Descripción | Motivo |
-|-------|-------------|--------|
-| título_alterno | Variante breve / aclaratoria | Facilita lectura rápida |
-| resumen_compacto | Síntesis del contenido relevante | Orientación inicial |
-| términos_emergentes | Tokens distintivos del subconjunto filtrado | Navegación temática |
-| destacados | Subconjunto priorizado | Priorización visual |
-
-## Caching y Rendimiento
-- Cache in-memory por combinación de filtros / página.
-- Búsqueda escalonada evita listas vacías (coincidencia total → parcial → frase → aproximada).
-- Recarga manual con `/reload` (proteger en producción).
-
-## Roadmap
-1. Autenticación para `/reload`.
-2. Ponderación avanzada con citaciones y recencia.
-3. Filtro de rango de fechas y citaciones mínimas.
-4. Resaltado de términos en fragmentos.
-5. Persistencia opcional de índice.
-
-## Documentación Extendida
-- Referencia rápida de API: `README_API.md`
-- Documento técnico completo: `BACKEND_DOCUMENTACION.md`
-- Despliegue y contenedores: `docs/DEPLOYMENT.md`
-
-## Análisis NLP Exploratorio (Fase Original)
-La sección siguiente preserva el contenido de la fase inicial de exploración NLP sobre documentos, mantenida por valor histórico y para reproducir experimentos de tokenización, lematización y análisis de frecuencias.
-
-### Pipeline de Procesamiento (Histórico)
-1. Carga de datos.
-2. Exploración de estructura.
-3. Limpieza (URLs, números, puntuación, normalización).
-4. Tokenización.
-5. Filtrado de stopwords.
-6. Lematización (spaCy).
-7. Frecuencias y ranking.
-8. Visualizaciones (barras, nubes, bigramas).
-9. Exportación multi-formato.
-
-### Características (Histórico)
-- Trazabilidad con `doc_id` y `accession`.
-- Procesamiento bilingüe (EN/ES).
-- Visualizaciones estáticas e interactivas.
-- Exportación a Excel/CSV/JSON.
-
-### Tecnologías (Histórico)
-- Datos: pandas, numpy.
-- NLP: nltk, spacy.
-- Visualización: matplotlib, seaborn, plotly, wordcloud.
-
-### Instalación NLP (Opcional)
-```powershell
-pip install -r requirements.txt
-python -m spacy download en_core_web_sm
-python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
-```
-
-### Uso Notebook
-Abrir `procesamiento.ipynb` y ejecutar secuencialmente.
-
-### Salidas Típicas
-```
-documentos_metadata.*
-lemmas_expandido.*
-frecuencias_lemmas.*
-bigramas_frecuentes.*
-documentos_procesados.json
-```
-
-### Personalización NLP
-```python
-custom_stopwords = {"ejemplo1", "ejemplo2"}
-stopwords_combined = stopwords_combined.union(custom_stopwords)
-```
-
-### Problemas Frecuentes
-Modelo spaCy faltante → instalar. Stopwords NLTK faltantes → descargar. Memoria → procesar en lotes.
-
----
 ## Licencia
-Ver archivo `LICENSE` (MIT) salvo indicación distinta.
 
-## Autoría
-Proyecto para competencia / exploración bioespacial 2025.
-
----
-¿Buscas el detalle completo? Lee `BACKEND_DOCUMENTACION.md`.
+MIT — ver [LICENSE](LICENSE).

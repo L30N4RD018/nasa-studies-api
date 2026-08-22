@@ -1,0 +1,34 @@
+# Secretos - NUNCA deben entrar en la imagen
+.env
+.env.*
+!.env.example
+
+# Historial de git (reduce tamano y evita filtrar commits)
+.git
+.gitignore
+.github
+
+# Entornos virtuales y cache de Python
+.venv
+venv
+env
+__pycache__
+*.py[cod]
+*.egg-info
+.pytest_cache
+.mypy_cache
+
+# Editores / SO
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Docs y artefactos no necesarios en runtime
+docs
+results
+*.md
+!README.md
+
+# NOTA: app/models/*.gguf NO se ignora a proposito.
+# El Dockerfile lo necesita en la imagen (GGUF_MODEL_PATH).

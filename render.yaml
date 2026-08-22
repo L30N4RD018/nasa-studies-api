@@ -1,15 +1,24 @@
 services:
   - type: web
-    name: nasa-backend
+    name: nasa-studies-api
     runtime: python
+    plan: free
     branch: main
+    region: oregon
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    # uvicorn en vez de gunicorn: ya es dependencia y con 512 MB
+    # un solo worker rinde mejor que gunicorn+UvicornWorker.
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
     envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
       - key: API_TITLE
         value: NASA Studies API
       - key: LOG_LEVEL
         value: info
       - key: ENABLE_CACHE
         value: "true"
-    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
-    startCommand: gunicorn -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:$PORT --timeout 120
-    healthCheckPath: /health
+      # Sin el .gguf en el repo, la API arranca en modo heuristico.
+      - key: GGUF_MODEL_PATH
+        value: /opt/render/project/src/app/models/odr_model_q5_k_m.gguf

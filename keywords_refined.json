@@ -1,0 +1,1602 @@
+[
+  {
+    "keyword": "rna",
+    "type": "unigram",
+    "score": 1.0,
+    "doc_freq": 460,
+    "corpus_tf": 3506,
+    "domain_boost": true
+  },
+  {
+    "keyword": "mus musculus",
+    "type": "bigram",
+    "score": 1.0,
+    "doc_freq": 116,
+    "corpus_tf": 489,
+    "domain_boost": true
+  },
+  {
+    "keyword": "mice",
+    "type": "unigram",
+    "score": 0.956449,
+    "doc_freq": 338,
+    "corpus_tf": 3536,
+    "domain_boost": true
+  },
+  {
+    "keyword": "spaceflight",
+    "type": "unigram",
+    "score": 0.933385,
+    "doc_freq": 500,
+    "corpus_tf": 3170,
+    "domain_boost": true
+  },
+  {
+    "keyword": "gene",
+    "type": "unigram",
+    "score": 0.890979,
+    "doc_freq": 555,
+    "corpus_tf": 2297,
+    "domain_boost": true
+  },
+  {
+    "keyword": "arabidopsis thaliana",
+    "type": "bigram",
+    "score": 0.886915,
+    "doc_freq": 110,
+    "corpus_tf": 358,
+    "domain_boost": true
+  },
+  {
+    "keyword": "expression",
+    "type": "unigram",
+    "score": 0.866713,
+    "doc_freq": 536,
+    "corpus_tf": 2181,
+    "domain_boost": true
+  },
+  {
+    "keyword": "pipeline versions",
+    "type": "bigram",
+    "score": 0.85056,
+    "doc_freq": 224,
+    "corpus_tf": 430,
+    "domain_boost": false
+  },
+  {
+    "keyword": "santa clara",
+    "type": "bigram",
+    "score": 0.849401,
+    "doc_freq": 162,
+    "corpus_tf": 279,
+    "domain_boost": false
+  },
+  {
+    "keyword": "fastqc reports",
+    "type": "bigram",
+    "score": 0.84736,
+    "doc_freq": 234,
+    "corpus_tf": 412,
+    "domain_boost": false
+  },
+  {
+    "keyword": "stringdb panther",
+    "type": "bigram",
+    "score": 0.845378,
+    "doc_freq": 225,
+    "corpus_tf": 234,
+    "domain_boost": false
+  },
+  {
+    "keyword": "space",
+    "type": "unigram",
+    "score": 0.8339,
+    "doc_freq": 692,
+    "corpus_tf": 3719,
+    "domain_boost": false
+  },
+  {
+    "keyword": "trim galore",
+    "type": "bigram",
+    "score": 0.831251,
+    "doc_freq": 159,
+    "corpus_tf": 175,
+    "domain_boost": false
+  },
+  {
+    "keyword": "log compiled",
+    "type": "bigram",
+    "score": 0.829541,
+    "doc_freq": 120,
+    "corpus_tf": 236,
+    "domain_boost": false
+  },
+  {
+    "keyword": "san diego",
+    "type": "bigram",
+    "score": 0.829052,
+    "doc_freq": 135,
+    "corpus_tf": 200,
+    "domain_boost": false
+  },
+  {
+    "keyword": "workflow documentation",
+    "type": "bigram",
+    "score": 0.818487,
+    "doc_freq": 179,
+    "corpus_tf": 182,
+    "domain_boost": false
+  },
+  {
+    "keyword": "lsg manuals",
+    "type": "bigram",
+    "score": 0.816669,
+    "doc_freq": 67,
+    "corpus_tf": 140,
+    "domain_boost": false
+  },
+  {
+    "keyword": "wald likelihood",
+    "type": "bigram",
+    "score": 0.815183,
+    "doc_freq": 148,
+    "corpus_tf": 152,
+    "domain_boost": false
+  },
+  {
+    "keyword": "imported tximport",
+    "type": "bigram",
+    "score": 0.814296,
+    "doc_freq": 159,
+    "corpus_tf": 163,
+    "domain_boost": false
+  },
+  {
+    "keyword": "thermo fisher",
+    "type": "bigram",
+    "score": 0.81401,
+    "doc_freq": 156,
+    "corpus_tf": 300,
+    "domain_boost": false
+  },
+  {
+    "keyword": "filtered trim",
+    "type": "bigram",
+    "score": 0.790447,
+    "doc_freq": 159,
+    "corpus_tf": 174,
+    "domain_boost": false
+  },
+  {
+    "keyword": "galactic cosmic",
+    "type": "bigram",
+    "score": 0.784462,
+    "doc_freq": 96,
+    "corpus_tf": 135,
+    "domain_boost": false
+  },
+  {
+    "keyword": "sars cov",
+    "type": "bigram",
+    "score": 0.784126,
+    "doc_freq": 6,
+    "corpus_tf": 86,
+    "domain_boost": false
+  },
+  {
+    "keyword": "references built",
+    "type": "bigram",
+    "score": 0.78341,
+    "doc_freq": 159,
+    "corpus_tf": 167,
+    "domain_boost": false
+  },
+  {
+    "keyword": "inner distance",
+    "type": "bigram",
+    "score": 0.780604,
+    "doc_freq": 81,
+    "corpus_tf": 153,
+    "domain_boost": false
+  },
+  {
+    "keyword": "liquid nitrogen",
+    "type": "bigram",
+    "score": 0.780433,
+    "doc_freq": 155,
+    "corpus_tf": 217,
+    "domain_boost": false
+  },
+  {
+    "keyword": "fisher scientific",
+    "type": "bigram",
+    "score": 0.773406,
+    "doc_freq": 161,
+    "corpus_tf": 298,
+    "domain_boost": false
+  },
+  {
+    "keyword": "study's isa",
+    "type": "bigram",
+    "score": 0.772604,
+    "doc_freq": 81,
+    "corpus_tf": 81,
+    "domain_boost": false
+  },
+  {
+    "keyword": "house detailed",
+    "type": "bigram",
+    "score": 0.772439,
+    "doc_freq": 186,
+    "corpus_tf": 186,
+    "domain_boost": false
+  },
+  {
+    "keyword": "ketamine xylazine",
+    "type": "bigram",
+    "score": 0.770007,
+    "doc_freq": 53,
+    "corpus_tf": 74,
+    "domain_boost": false
+  },
+  {
+    "keyword": "plot pseudo",
+    "type": "bigram",
+    "score": 0.769746,
+    "doc_freq": 58,
+    "corpus_tf": 116,
+    "domain_boost": false
+  },
+  {
+    "keyword": "homo sapiens",
+    "type": "bigram",
+    "score": 0.768925,
+    "doc_freq": 23,
+    "corpus_tf": 93,
+    "domain_boost": false
+  },
+  {
+    "keyword": "united states",
+    "type": "bigram",
+    "score": 0.765724,
+    "doc_freq": 30,
+    "corpus_tf": 102,
+    "domain_boost": false
+  },
+  {
+    "keyword": "wild type",
+    "type": "bigram",
+    "score": 0.765139,
+    "doc_freq": 131,
+    "corpus_tf": 274,
+    "domain_boost": false
+  },
+  {
+    "keyword": "manuals zip",
+    "type": "bigram",
+    "score": 0.761402,
+    "doc_freq": 67,
+    "corpus_tf": 140,
+    "domain_boost": false
+  },
+  {
+    "keyword": "dna",
+    "type": "unigram",
+    "score": 0.759668,
+    "doc_freq": 426,
+    "corpus_tf": 1964,
+    "domain_boost": true
+  },
+  {
+    "keyword": "powered cutadapt",
+    "type": "bigram",
+    "score": 0.75471,
+    "doc_freq": 118,
+    "corpus_tf": 125,
+    "domain_boost": false
+  },
+  {
+    "keyword": "evaluated fastqc",
+    "type": "bigram",
+    "score": 0.753004,
+    "doc_freq": 168,
+    "corpus_tf": 274,
+    "domain_boost": false
+  },
+  {
+    "keyword": "assurance density",
+    "type": "bigram",
+    "score": 0.751618,
+    "doc_freq": 81,
+    "corpus_tf": 162,
+    "domain_boost": false
+  },
+  {
+    "keyword": "assets lsg",
+    "type": "bigram",
+    "score": 0.750536,
+    "doc_freq": 70,
+    "corpus_tf": 143,
+    "domain_boost": false
+  },
+  {
+    "keyword": "long term",
+    "type": "bigram",
+    "score": 0.749075,
+    "doc_freq": 122,
+    "corpus_tf": 276,
+    "domain_boost": false
+  },
+  {
+    "keyword": "oxidative stress",
+    "type": "bigram",
+    "score": 0.746773,
+    "doc_freq": 77,
+    "corpus_tf": 187,
+    "domain_boost": true
+  },
+  {
+    "keyword": "bullet blender",
+    "type": "bigram",
+    "score": 0.74668,
+    "doc_freq": 36,
+    "corpus_tf": 57,
+    "domain_boost": false
+  },
+  {
+    "keyword": "retrieved ncbi",
+    "type": "bigram",
+    "score": 0.745502,
+    "doc_freq": 116,
+    "corpus_tf": 125,
+    "domain_boost": false
+  },
+  {
+    "keyword": "microgravity",
+    "type": "unigram",
+    "score": 0.745018,
+    "doc_freq": 394,
+    "corpus_tf": 1799,
+    "domain_boost": true
+  },
+  {
+    "keyword": "versions stringdb",
+    "type": "bigram",
+    "score": 0.743094,
+    "doc_freq": 201,
+    "corpus_tf": 201,
+    "domain_boost": false
+  },
+  {
+    "keyword": "likelihood ratio",
+    "type": "bigram",
+    "score": 0.741761,
+    "doc_freq": 148,
+    "corpus_tf": 152,
+    "domain_boost": false
+  },
+  {
+    "keyword": "committee iacuc",
+    "type": "bigram",
+    "score": 0.741506,
+    "doc_freq": 90,
+    "corpus_tf": 92,
+    "domain_boost": false
+  },
+  {
+    "keyword": "plots boxplots",
+    "type": "bigram",
+    "score": 0.741304,
+    "doc_freq": 58,
+    "corpus_tf": 116,
+    "domain_boost": false
+  },
+  {
+    "keyword": "room temperature",
+    "type": "bigram",
+    "score": 0.741176,
+    "doc_freq": 174,
+    "corpus_tf": 313,
+    "domain_boost": false
+  },
+  {
+    "keyword": "differentially expressed",
+    "type": "bigram",
+    "score": 0.740489,
+    "doc_freq": 87,
+    "corpus_tf": 147,
+    "domain_boost": false
+  },
+  {
+    "keyword": "htstream seqscreener",
+    "type": "bigram",
+    "score": 0.74047,
+    "doc_freq": 129,
+    "corpus_tf": 137,
+    "domain_boost": false
+  },
+  {
+    "keyword": "tfs assets",
+    "type": "bigram",
+    "score": 0.738171,
+    "doc_freq": 70,
+    "corpus_tf": 143,
+    "domain_boost": false
+  },
+  {
+    "keyword": "annotations assigned",
+    "type": "bigram",
+    "score": 0.737559,
+    "doc_freq": 224,
+    "corpus_tf": 237,
+    "domain_boost": false
+  },
+  {
+    "keyword": "qubit fluorometer",
+    "type": "bigram",
+    "score": 0.736619,
+    "doc_freq": 108,
+    "corpus_tf": 154,
+    "domain_boost": false
+  },
+  {
+    "keyword": "sampleprocessing tree",
+    "type": "bigram",
+    "score": 0.736432,
+    "doc_freq": 34,
+    "corpus_tf": 150,
+    "domain_boost": false
+  },
+  {
+    "keyword": "median ratios",
+    "type": "bigram",
+    "score": 0.736359,
+    "doc_freq": 110,
+    "corpus_tf": 114,
+    "domain_boost": false
+  },
+  {
+    "keyword": "paired end",
+    "type": "bigram",
+    "score": 0.735582,
+    "doc_freq": 165,
+    "corpus_tf": 219,
+    "domain_boost": false
+  },
+  {
+    "keyword": "unpowered record",
+    "type": "bigram",
+    "score": 0.735306,
+    "doc_freq": 56,
+    "corpus_tf": 56,
+    "domain_boost": false
+  },
+  {
+    "keyword": "screened against",
+    "type": "bigram",
+    "score": 0.735245,
+    "doc_freq": 132,
+    "corpus_tf": 151,
+    "domain_boost": false
+  },
+  {
+    "keyword": "galore powered",
+    "type": "bigram",
+    "score": 0.73429,
+    "doc_freq": 118,
+    "corpus_tf": 125,
+    "domain_boost": false
+  },
+  {
+    "keyword": "sensitivities methodologies",
+    "type": "bigram",
+    "score": 0.732752,
+    "doc_freq": 56,
+    "corpus_tf": 56,
+    "domain_boost": false
+  },
+  {
+    "keyword": "annotation house",
+    "type": "bigram",
+    "score": 0.732085,
+    "doc_freq": 186,
+    "corpus_tf": 186,
+    "domain_boost": false
+  },
+  {
+    "keyword": "record constantly",
+    "type": "bigram",
+    "score": 0.729669,
+    "doc_freq": 56,
+    "corpus_tf": 56,
+    "domain_boost": false
+  },
+  {
+    "keyword": "passive dosimeters",
+    "type": "bigram",
+    "score": 0.729453,
+    "doc_freq": 74,
+    "corpus_tf": 130,
+    "domain_boost": false
+  },
+  {
+    "keyword": "genebody coverage",
+    "type": "bigram",
+    "score": 0.727854,
+    "doc_freq": 116,
+    "corpus_tf": 116,
+    "domain_boost": false
+  },
+  {
+    "keyword": "distinguishing lightly",
+    "type": "bigram",
+    "score": 0.727032,
+    "doc_freq": 56,
+    "corpus_tf": 56,
+    "domain_boost": false
+  },
+  {
+    "keyword": "blob master",
+    "type": "bigram",
+    "score": 0.726756,
+    "doc_freq": 222,
+    "corpus_tf": 268,
+    "domain_boost": false
+  },
+  {
+    "keyword": "scientific waltham",
+    "type": "bigram",
+    "score": 0.726523,
+    "doc_freq": 120,
+    "corpus_tf": 225,
+    "domain_boost": false
+  },
+  {
+    "keyword": "cervical dislocation",
+    "type": "bigram",
+    "score": 0.72642,
+    "doc_freq": 45,
+    "corpus_tf": 53,
+    "domain_boost": false
+  },
+  {
+    "keyword": "blob refannottable",
+    "type": "bigram",
+    "score": 0.725156,
+    "doc_freq": 158,
+    "corpus_tf": 158,
+    "domain_boost": false
+  },
+  {
+    "keyword": "gene expression",
+    "type": "bigram",
+    "score": 0.7251,
+    "doc_freq": 342,
+    "corpus_tf": 937,
+    "domain_boost": true
+  },
+  {
+    "keyword": "spike mixes",
+    "type": "bigram",
+    "score": 0.724206,
+    "doc_freq": 62,
+    "corpus_tf": 92,
+    "domain_boost": false
+  },
+  {
+    "keyword": "weight bearing",
+    "type": "bigram",
+    "score": 0.724035,
+    "doc_freq": 41,
+    "corpus_tf": 154,
+    "domain_boost": false
+  },
+  {
+    "keyword": "nanodrop spectrophotometer",
+    "type": "bigram",
+    "score": 0.723489,
+    "doc_freq": 66,
+    "corpus_tf": 90,
+    "domain_boost": false
+  },
+  {
+    "keyword": "ncbi sep",
+    "type": "bigram",
+    "score": 0.722962,
+    "doc_freq": 74,
+    "corpus_tf": 78,
+    "domain_boost": false
+  },
+  {
+    "keyword": "matter experts",
+    "type": "bigram",
+    "score": 0.722931,
+    "doc_freq": 57,
+    "corpus_tf": 58,
+    "domain_boost": false
+  },
+  {
+    "keyword": "custom annotation",
+    "type": "bigram",
+    "score": 0.722885,
+    "doc_freq": 188,
+    "corpus_tf": 190,
+    "domain_boost": false
+  },
+  {
+    "keyword": "sigma aldrich",
+    "type": "bigram",
+    "score": 0.722686,
+    "doc_freq": 62,
+    "corpus_tf": 77,
+    "domain_boost": false
+  },
+  {
+    "keyword": "experts alsda",
+    "type": "bigram",
+    "score": 0.722673,
+    "doc_freq": 56,
+    "corpus_tf": 56,
+    "domain_boost": false
+  },
+  {
+    "keyword": "quantification imported",
+    "type": "bigram",
+    "score": 0.721017,
+    "doc_freq": 159,
+    "corpus_tf": 163,
+    "domain_boost": false
+  },
+  {
+    "keyword": "kinematica bohemia",
+    "type": "bigram",
+    "score": 0.720483,
+    "doc_freq": 28,
+    "corpus_tf": 47,
+    "domain_boost": false
+  },
+  {
+    "keyword": "rnase free",
+    "type": "bigram",
+    "score": 0.716922,
+    "doc_freq": 114,
+    "corpus_tf": 160,
+    "domain_boost": false
+  },
+  {
+    "keyword": "pairwise wald",
+    "type": "bigram",
+    "score": 0.716672,
+    "doc_freq": 106,
+    "corpus_tf": 108,
+    "domain_boost": false
+  },
+  {
+    "keyword": "england biolabs",
+    "type": "bigram",
+    "score": 0.716185,
+    "doc_freq": 35,
+    "corpus_tf": 54,
+    "domain_boost": false
+  },
+  {
+    "keyword": "beckman coulter",
+    "type": "bigram",
+    "score": 0.71611,
+    "doc_freq": 36,
+    "corpus_tf": 47,
+    "domain_boost": false
+  },
+  {
+    "keyword": "criteria distinguishing",
+    "type": "bigram",
+    "score": 0.715172,
+    "doc_freq": 56,
+    "corpus_tf": 56,
+    "domain_boost": false
+  },
+  {
+    "keyword": "partner own",
+    "type": "bigram",
+    "score": 0.71395,
+    "doc_freq": 56,
+    "corpus_tf": 56,
+    "domain_boost": false
+  },
+  {
+    "keyword": "radiation",
+    "type": "unigram",
+    "score": 0.703058,
+    "doc_freq": 310,
+    "corpus_tf": 1616,
+    "domain_boost": true
+  },
+  {
+    "keyword": "genes",
+    "type": "unigram",
+    "score": 0.691637,
+    "doc_freq": 386,
+    "corpus_tf": 1403,
+    "domain_boost": true
+  },
+  {
+    "keyword": "iss",
+    "type": "unigram",
+    "score": 0.650459,
+    "doc_freq": 340,
+    "corpus_tf": 2288,
+    "domain_boost": false
+  },
+  {
+    "keyword": "performed",
+    "type": "unigram",
+    "score": 0.647406,
+    "doc_freq": 544,
+    "corpus_tf": 1936,
+    "domain_boost": false
+  },
+  {
+    "keyword": "cell",
+    "type": "unigram",
+    "score": 0.625212,
+    "doc_freq": 473,
+    "corpus_tf": 2048,
+    "domain_boost": false
+  },
+  {
+    "keyword": "tissue",
+    "type": "unigram",
+    "score": 0.621182,
+    "doc_freq": 340,
+    "corpus_tf": 1105,
+    "domain_boost": true
+  },
+  {
+    "keyword": "sequencing",
+    "type": "unigram",
+    "score": 0.609896,
+    "doc_freq": 347,
+    "corpus_tf": 1074,
+    "domain_boost": true
+  },
+  {
+    "keyword": "flight",
+    "type": "unigram",
+    "score": 0.60406,
+    "doc_freq": 345,
+    "corpus_tf": 1924,
+    "domain_boost": false
+  },
+  {
+    "keyword": "nasa",
+    "type": "unigram",
+    "score": 0.599164,
+    "doc_freq": 412,
+    "corpus_tf": 1565,
+    "domain_boost": false
+  },
+  {
+    "keyword": "cells",
+    "type": "unigram",
+    "score": 0.58981,
+    "doc_freq": 352,
+    "corpus_tf": 1789,
+    "domain_boost": false
+  },
+  {
+    "keyword": "ground",
+    "type": "unigram",
+    "score": 0.585206,
+    "doc_freq": 406,
+    "corpus_tf": 1660,
+    "domain_boost": false
+  },
+  {
+    "keyword": "genelab",
+    "type": "unigram",
+    "score": 0.579114,
+    "doc_freq": 315,
+    "corpus_tf": 1680,
+    "domain_boost": false
+  },
+  {
+    "keyword": "bone",
+    "type": "unigram",
+    "score": 0.514886,
+    "doc_freq": 142,
+    "corpus_tf": 1288,
+    "domain_boost": true
+  },
+  {
+    "keyword": "following",
+    "type": "unigram",
+    "score": 0.514288,
+    "doc_freq": 454,
+    "corpus_tf": 1267,
+    "domain_boost": false
+  },
+  {
+    "keyword": "conditions",
+    "type": "unigram",
+    "score": 0.505511,
+    "doc_freq": 434,
+    "corpus_tf": 1144,
+    "domain_boost": false
+  },
+  {
+    "keyword": "response",
+    "type": "unigram",
+    "score": 0.505206,
+    "doc_freq": 408,
+    "corpus_tf": 1184,
+    "domain_boost": false
+  },
+  {
+    "keyword": "effects",
+    "type": "unigram",
+    "score": 0.502019,
+    "doc_freq": 452,
+    "corpus_tf": 1120,
+    "domain_boost": false
+  },
+  {
+    "keyword": "reads",
+    "type": "unigram",
+    "score": 0.498396,
+    "doc_freq": 278,
+    "corpus_tf": 1100,
+    "domain_boost": false
+  },
+  {
+    "keyword": "stress",
+    "type": "unigram",
+    "score": 0.497996,
+    "doc_freq": 251,
+    "corpus_tf": 797,
+    "domain_boost": true
+  },
+  {
+    "keyword": "human",
+    "type": "unigram",
+    "score": 0.488729,
+    "doc_freq": 333,
+    "corpus_tf": 1106,
+    "domain_boost": false
+  },
+  {
+    "keyword": "agilent",
+    "type": "unigram",
+    "score": 0.47612,
+    "doc_freq": 297,
+    "corpus_tf": 1129,
+    "domain_boost": false
+  },
+  {
+    "keyword": "mouse",
+    "type": "unigram",
+    "score": 0.474259,
+    "doc_freq": 232,
+    "corpus_tf": 702,
+    "domain_boost": true
+  },
+  {
+    "keyword": "changes",
+    "type": "unigram",
+    "score": 0.468972,
+    "doc_freq": 369,
+    "corpus_tf": 1012,
+    "domain_boost": false
+  },
+  {
+    "keyword": "raw",
+    "type": "unigram",
+    "score": 0.46811,
+    "doc_freq": 306,
+    "corpus_tf": 923,
+    "domain_boost": false
+  },
+  {
+    "keyword": "experiment",
+    "type": "unigram",
+    "score": 0.46743,
+    "doc_freq": 359,
+    "corpus_tf": 979,
+    "domain_boost": false
+  },
+  {
+    "keyword": "plant",
+    "type": "unigram",
+    "score": 0.466228,
+    "doc_freq": 160,
+    "corpus_tf": 824,
+    "domain_boost": true
+  },
+  {
+    "keyword": "animals",
+    "type": "unigram",
+    "score": 0.465576,
+    "doc_freq": 247,
+    "corpus_tf": 1181,
+    "domain_boost": false
+  },
+  {
+    "keyword": "gravity",
+    "type": "unigram",
+    "score": 0.463526,
+    "doc_freq": 188,
+    "corpus_tf": 808,
+    "domain_boost": true
+  },
+  {
+    "keyword": "illumina",
+    "type": "unigram",
+    "score": 0.461757,
+    "doc_freq": 296,
+    "corpus_tf": 931,
+    "domain_boost": false
+  },
+  {
+    "keyword": "plants",
+    "type": "unigram",
+    "score": 0.460123,
+    "doc_freq": 158,
+    "corpus_tf": 787,
+    "domain_boost": true
+  },
+  {
+    "keyword": "arabidopsis",
+    "type": "unigram",
+    "score": 0.454938,
+    "doc_freq": 141,
+    "corpus_tf": 725,
+    "domain_boost": true
+  },
+  {
+    "keyword": "tissues",
+    "type": "unigram",
+    "score": 0.453151,
+    "doc_freq": 240,
+    "corpus_tf": 638,
+    "domain_boost": true
+  },
+  {
+    "keyword": "exposure",
+    "type": "unigram",
+    "score": 0.450235,
+    "doc_freq": 348,
+    "corpus_tf": 969,
+    "domain_boost": false
+  },
+  {
+    "keyword": "growth",
+    "type": "unigram",
+    "score": 0.44907,
+    "doc_freq": 278,
+    "corpus_tf": 1025,
+    "domain_boost": false
+  },
+  {
+    "keyword": "international",
+    "type": "unigram",
+    "score": 0.448209,
+    "doc_freq": 388,
+    "corpus_tf": 843,
+    "domain_boost": false
+  },
+  {
+    "keyword": "fastq",
+    "type": "unigram",
+    "score": 0.445005,
+    "doc_freq": 230,
+    "corpus_tf": 850,
+    "domain_boost": false
+  },
+  {
+    "keyword": "dose",
+    "type": "unigram",
+    "score": 0.444532,
+    "doc_freq": 223,
+    "corpus_tf": 988,
+    "domain_boost": false
+  },
+  {
+    "keyword": "muscle",
+    "type": "unigram",
+    "score": 0.442309,
+    "doc_freq": 143,
+    "corpus_tf": 867,
+    "domain_boost": true
+  },
+  {
+    "keyword": "system",
+    "type": "unigram",
+    "score": 0.441925,
+    "doc_freq": 394,
+    "corpus_tf": 877,
+    "domain_boost": false
+  },
+  {
+    "keyword": "station",
+    "type": "unigram",
+    "score": 0.440212,
+    "doc_freq": 411,
+    "corpus_tf": 822,
+    "domain_boost": false
+  },
+  {
+    "keyword": "research",
+    "type": "unigram",
+    "score": 0.440009,
+    "doc_freq": 370,
+    "corpus_tf": 881,
+    "domain_boost": false
+  },
+  {
+    "keyword": "earth",
+    "type": "unigram",
+    "score": 0.43925,
+    "doc_freq": 347,
+    "corpus_tf": 853,
+    "domain_boost": false
+  },
+  {
+    "keyword": "including",
+    "type": "unigram",
+    "score": 0.43694,
+    "doc_freq": 335,
+    "corpus_tf": 826,
+    "domain_boost": false
+  },
+  {
+    "keyword": "compared",
+    "type": "unigram",
+    "score": 0.426094,
+    "doc_freq": 431,
+    "corpus_tf": 832,
+    "domain_boost": false
+  },
+  {
+    "keyword": "assessed",
+    "type": "unigram",
+    "score": 0.421093,
+    "doc_freq": 285,
+    "corpus_tf": 779,
+    "domain_boost": false
+  },
+  {
+    "keyword": "protein",
+    "type": "unigram",
+    "score": 0.418974,
+    "doc_freq": 243,
+    "corpus_tf": 896,
+    "domain_boost": false
+  },
+  {
+    "keyword": "associated",
+    "type": "unigram",
+    "score": 0.41387,
+    "doc_freq": 367,
+    "corpus_tf": 779,
+    "domain_boost": false
+  },
+  {
+    "keyword": "normalized",
+    "type": "unigram",
+    "score": 0.412496,
+    "doc_freq": 305,
+    "corpus_tf": 714,
+    "domain_boost": false
+  },
+  {
+    "keyword": "environment",
+    "type": "unigram",
+    "score": 0.410172,
+    "doc_freq": 307,
+    "corpus_tf": 786,
+    "domain_boost": false
+  },
+  {
+    "keyword": "set",
+    "type": "unigram",
+    "score": 0.403246,
+    "doc_freq": 317,
+    "corpus_tf": 743,
+    "domain_boost": false
+  },
+  {
+    "keyword": "rsem",
+    "type": "unigram",
+    "score": 0.399305,
+    "doc_freq": 160,
+    "corpus_tf": 729,
+    "domain_boost": false
+  },
+  {
+    "keyword": "star",
+    "type": "unigram",
+    "score": 0.39726,
+    "doc_freq": 169,
+    "corpus_tf": 690,
+    "domain_boost": false
+  },
+  {
+    "keyword": "animal",
+    "type": "unigram",
+    "score": 0.395767,
+    "doc_freq": 250,
+    "corpus_tf": 700,
+    "domain_boost": false
+  },
+  {
+    "keyword": "responses",
+    "type": "unigram",
+    "score": 0.394973,
+    "doc_freq": 260,
+    "corpus_tf": 782,
+    "domain_boost": false
+  },
+  {
+    "keyword": "genome",
+    "type": "unigram",
+    "score": 0.394153,
+    "doc_freq": 359,
+    "corpus_tf": 757,
+    "domain_boost": false
+  },
+  {
+    "keyword": "irradiation",
+    "type": "unigram",
+    "score": 0.393758,
+    "doc_freq": 132,
+    "corpus_tf": 647,
+    "domain_boost": true
+  },
+  {
+    "keyword": "high",
+    "type": "unigram",
+    "score": 0.392243,
+    "doc_freq": 308,
+    "corpus_tf": 715,
+    "domain_boost": false
+  },
+  {
+    "keyword": "induced",
+    "type": "unigram",
+    "score": 0.391092,
+    "doc_freq": 278,
+    "corpus_tf": 713,
+    "domain_boost": false
+  },
+  {
+    "keyword": "water",
+    "type": "unigram",
+    "score": 0.389854,
+    "doc_freq": 307,
+    "corpus_tf": 782,
+    "domain_boost": false
+  },
+  {
+    "keyword": "increased",
+    "type": "unigram",
+    "score": 0.388311,
+    "doc_freq": 257,
+    "corpus_tf": 696,
+    "domain_boost": false
+  },
+  {
+    "keyword": "biological",
+    "type": "unigram",
+    "score": 0.38775,
+    "doc_freq": 302,
+    "corpus_tf": 650,
+    "domain_boost": false
+  },
+  {
+    "keyword": "specific",
+    "type": "unigram",
+    "score": 0.38355,
+    "doc_freq": 336,
+    "corpus_tf": 664,
+    "domain_boost": false
+  },
+  {
+    "keyword": "temperature",
+    "type": "unigram",
+    "score": 0.380263,
+    "doc_freq": 319,
+    "corpus_tf": 695,
+    "domain_boost": false
+  },
+  {
+    "keyword": "environmental",
+    "type": "unigram",
+    "score": 0.379508,
+    "doc_freq": 295,
+    "corpus_tf": 642,
+    "domain_boost": false
+  },
+  {
+    "keyword": "low",
+    "type": "unigram",
+    "score": 0.378504,
+    "doc_freq": 264,
+    "corpus_tf": 690,
+    "domain_boost": false
+  },
+  {
+    "keyword": "followed",
+    "type": "unigram",
+    "score": 0.378095,
+    "doc_freq": 286,
+    "corpus_tf": 683,
+    "domain_boost": false
+  },
+  {
+    "keyword": "reference",
+    "type": "unigram",
+    "score": 0.376772,
+    "doc_freq": 340,
+    "corpus_tf": 625,
+    "domain_boost": false
+  },
+  {
+    "keyword": "placed",
+    "type": "unigram",
+    "score": 0.374796,
+    "doc_freq": 274,
+    "corpus_tf": 663,
+    "domain_boost": false
+  },
+  {
+    "keyword": "musculus",
+    "type": "unigram",
+    "score": 0.374676,
+    "doc_freq": 118,
+    "corpus_tf": 491,
+    "domain_boost": true
+  },
+  {
+    "keyword": "experiments",
+    "type": "unigram",
+    "score": 0.373859,
+    "doc_freq": 283,
+    "corpus_tf": 706,
+    "domain_boost": false
+  },
+  {
+    "keyword": "mus",
+    "type": "unigram",
+    "score": 0.373839,
+    "doc_freq": 116,
+    "corpus_tf": 489,
+    "domain_boost": true
+  },
+  {
+    "keyword": "different",
+    "type": "unigram",
+    "score": 0.370824,
+    "doc_freq": 302,
+    "corpus_tf": 688,
+    "domain_boost": false
+  },
+  {
+    "keyword": "aligned",
+    "type": "unigram",
+    "score": 0.36932,
+    "doc_freq": 226,
+    "corpus_tf": 591,
+    "domain_boost": false
+  },
+  {
+    "keyword": "mission",
+    "type": "unigram",
+    "score": 0.36761,
+    "doc_freq": 265,
+    "corpus_tf": 605,
+    "domain_boost": false
+  },
+  {
+    "keyword": "astronauts",
+    "type": "unigram",
+    "score": 0.367229,
+    "doc_freq": 184,
+    "corpus_tf": 488,
+    "domain_boost": true
+  },
+  {
+    "keyword": "old",
+    "type": "unigram",
+    "score": 0.365341,
+    "doc_freq": 272,
+    "corpus_tf": 698,
+    "domain_boost": false
+  },
+  {
+    "keyword": "frozen",
+    "type": "unigram",
+    "score": 0.365242,
+    "doc_freq": 271,
+    "corpus_tf": 659,
+    "domain_boost": false
+  },
+  {
+    "keyword": "removed",
+    "type": "unigram",
+    "score": 0.364569,
+    "doc_freq": 273,
+    "corpus_tf": 626,
+    "domain_boost": false
+  },
+  {
+    "keyword": "collected",
+    "type": "unigram",
+    "score": 0.364405,
+    "doc_freq": 299,
+    "corpus_tf": 616,
+    "domain_boost": false
+  },
+  {
+    "keyword": "differential",
+    "type": "unigram",
+    "score": 0.362298,
+    "doc_freq": 301,
+    "corpus_tf": 581,
+    "domain_boost": false
+  },
+  {
+    "keyword": "technologies",
+    "type": "unigram",
+    "score": 0.362213,
+    "doc_freq": 268,
+    "corpus_tf": 592,
+    "domain_boost": false
+  },
+  {
+    "keyword": "pathways",
+    "type": "unigram",
+    "score": 0.360513,
+    "doc_freq": 178,
+    "corpus_tf": 438,
+    "domain_boost": true
+  },
+  {
+    "keyword": "rrna",
+    "type": "unigram",
+    "score": 0.359344,
+    "doc_freq": 230,
+    "corpus_tf": 587,
+    "domain_boost": false
+  },
+  {
+    "keyword": "stored",
+    "type": "unigram",
+    "score": 0.359136,
+    "doc_freq": 317,
+    "corpus_tf": 596,
+    "domain_boost": false
+  },
+  {
+    "keyword": "light",
+    "type": "unigram",
+    "score": 0.356313,
+    "doc_freq": 243,
+    "corpus_tf": 714,
+    "domain_boost": false
+  },
+  {
+    "keyword": "health",
+    "type": "unigram",
+    "score": 0.355735,
+    "doc_freq": 248,
+    "corpus_tf": 644,
+    "domain_boost": false
+  },
+  {
+    "keyword": "containing",
+    "type": "unigram",
+    "score": 0.354066,
+    "doc_freq": 331,
+    "corpus_tf": 569,
+    "domain_boost": false
+  },
+  {
+    "keyword": "described",
+    "type": "unigram",
+    "score": 0.353783,
+    "doc_freq": 369,
+    "corpus_tf": 584,
+    "domain_boost": false
+  },
+  {
+    "keyword": "exposed",
+    "type": "unigram",
+    "score": 0.352991,
+    "doc_freq": 264,
+    "corpus_tf": 585,
+    "domain_boost": false
+  },
+  {
+    "keyword": "levels",
+    "type": "unigram",
+    "score": 0.352305,
+    "doc_freq": 282,
+    "corpus_tf": 597,
+    "domain_boost": false
+  },
+  {
+    "keyword": "pipeline",
+    "type": "unigram",
+    "score": 0.348212,
+    "doc_freq": 241,
+    "corpus_tf": 495,
+    "domain_boost": false
+  },
+  {
+    "keyword": "buffer",
+    "type": "unigram",
+    "score": 0.348079,
+    "doc_freq": 228,
+    "corpus_tf": 612,
+    "domain_boost": false
+  },
+  {
+    "keyword": "scientific",
+    "type": "unigram",
+    "score": 0.346341,
+    "doc_freq": 256,
+    "corpus_tf": 548,
+    "domain_boost": false
+  },
+  {
+    "keyword": "type",
+    "type": "unigram",
+    "score": 0.345264,
+    "doc_freq": 244,
+    "corpus_tf": 549,
+    "domain_boost": false
+  },
+  {
+    "keyword": "level",
+    "type": "unigram",
+    "score": 0.344519,
+    "doc_freq": 203,
+    "corpus_tf": 560,
+    "domain_boost": false
+  },
+  {
+    "keyword": "qiagen",
+    "type": "unigram",
+    "score": 0.344219,
+    "doc_freq": 295,
+    "corpus_tf": 547,
+    "domain_boost": false
+  },
+  {
+    "keyword": "immune",
+    "type": "unigram",
+    "score": 0.341273,
+    "doc_freq": 132,
+    "corpus_tf": 464,
+    "domain_boost": true
+  },
+  {
+    "keyword": "long",
+    "type": "unigram",
+    "score": 0.339955,
+    "doc_freq": 235,
+    "corpus_tf": 551,
+    "domain_boost": false
+  },
+  {
+    "keyword": "extracted",
+    "type": "unigram",
+    "score": 0.337737,
+    "doc_freq": 301,
+    "corpus_tf": 527,
+    "domain_boost": false
+  },
+  {
+    "keyword": "end",
+    "type": "unigram",
+    "score": 0.337154,
+    "doc_freq": 295,
+    "corpus_tf": 516,
+    "domain_boost": false
+  },
+  {
+    "keyword": "annotations",
+    "type": "unigram",
+    "score": 0.336617,
+    "doc_freq": 233,
+    "corpus_tf": 461,
+    "domain_boost": false
+  },
+  {
+    "keyword": "center",
+    "type": "unigram",
+    "score": 0.336039,
+    "doc_freq": 271,
+    "corpus_tf": 523,
+    "domain_boost": false
+  },
+  {
+    "keyword": "ensembl",
+    "type": "unigram",
+    "score": 0.335165,
+    "doc_freq": 242,
+    "corpus_tf": 522,
+    "domain_boost": false
+  },
+  {
+    "keyword": "molecular",
+    "type": "unigram",
+    "score": 0.335136,
+    "doc_freq": 236,
+    "corpus_tf": 507,
+    "domain_boost": false
+  },
+  {
+    "keyword": "isolated",
+    "type": "unigram",
+    "score": 0.333545,
+    "doc_freq": 267,
+    "corpus_tf": 531,
+    "domain_boost": false
+  },
+  {
+    "keyword": "housed",
+    "type": "unigram",
+    "score": 0.332689,
+    "doc_freq": 206,
+    "corpus_tf": 575,
+    "domain_boost": false
+  },
+  {
+    "keyword": "body",
+    "type": "unigram",
+    "score": 0.332271,
+    "doc_freq": 268,
+    "corpus_tf": 537,
+    "domain_boost": false
+  },
+  {
+    "keyword": "duration",
+    "type": "unigram",
+    "score": 0.330742,
+    "doc_freq": 232,
+    "corpus_tf": 489,
+    "domain_boost": false
+  },
+  {
+    "keyword": "related",
+    "type": "unigram",
+    "score": 0.329222,
+    "doc_freq": 222,
+    "corpus_tf": 527,
+    "domain_boost": false
+  },
+  {
+    "keyword": "via",
+    "type": "unigram",
+    "score": 0.328316,
+    "doc_freq": 285,
+    "corpus_tf": 495,
+    "domain_boost": false
+  },
+  {
+    "keyword": "single",
+    "type": "unigram",
+    "score": 0.327422,
+    "doc_freq": 259,
+    "corpus_tf": 541,
+    "domain_boost": false
+  },
+  {
+    "keyword": "potential",
+    "type": "unigram",
+    "score": 0.327237,
+    "doc_freq": 217,
+    "corpus_tf": 510,
+    "domain_boost": false
+  }
+]

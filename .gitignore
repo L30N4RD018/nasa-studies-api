@@ -148,3 +148,6 @@ offload_folder/
 odr/odr_model_quantized_int8/
 **/odr_model_quantized_int8/
 *.safetensors
+
+# Modelos GGUF cuantizados (no versionar - ~869 MB)
+*.gguf
